@@ -99,6 +99,8 @@ androidProject()
 dependencies {
     implementation (AppDependencies.kotlinUI)
 
+    implementation(project(":ui"))
+
     implementation("androidx.appcompat:appcompat:1.4.1")
 
     implementation ("androidx.fragment:fragment-ktx:1.4.1")
