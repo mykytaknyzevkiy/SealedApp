@@ -101,6 +101,10 @@ dependencies {
 
     implementation(project(":ui"))
 
+    implementation(project(":repository"))
+
+    //implementation(project(":vnc"))
+
     implementation("androidx.appcompat:appcompat:1.4.1")
 
     implementation ("androidx.fragment:fragment-ktx:1.4.1")
@@ -116,6 +120,8 @@ dependencies {
     implementation( "com.google.firebase:firebase-crashlytics-ktx")
 
     implementation ("com.google.android.material:material:1.5.0")
+
+    implementation ("androidx.glance:glance-appwidget:1.0.0-alpha03")
 }
 
 tasks.register("deployForTester") {
