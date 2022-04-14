@@ -15,6 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import com.sealed.repository.AppRepository
 import com.sealed.repository.model.AppModel
 
 @Composable
@@ -27,9 +28,11 @@ fun AppViewHolder(
 
     Column(
         modifier = Modifier.clickable {
+            val url = AppRepository().vncUrl(context)
+
             Intent(Intent.ACTION_VIEW).apply {
                 setClassName("com.iiordanov.freebVNC", "com.iiordanov.bVNC.RemoteCanvasActivity")
-                data = Uri.parse("rdp://192.168.48.162:5901/?ConnectionName=title&RdpUsername=root&RdpPassword=gdc45^2wEdDghT67")
+                data = Uri.parse("rdp://$url:5901/?ConnectionName=title&RdpUsername=root&RdpPassword=gdc45^2wEdDghT67")
             }.also {
                 context.startActivity(it)
             }

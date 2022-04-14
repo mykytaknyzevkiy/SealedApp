@@ -1,5 +1,6 @@
 package com.sealed.app.screen.main
 
+import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.sealed.repository.AppRepository
@@ -30,5 +31,9 @@ class MainViewModel : ViewModel() {
             }
             .launchIn(viewModelScope)
     }
+
+    fun vncUrl(context: Context) = appRepository.vncUrl(context)
+
+    fun changeVncUrl(context: Context, url: String) = appRepository.changeVncUrl(context, url)
 
 }

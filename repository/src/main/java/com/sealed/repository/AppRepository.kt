@@ -1,9 +1,23 @@
 package com.sealed.repository
 
+import android.annotation.SuppressLint
+import android.content.Context
+import android.content.SharedPreferences
 import com.sealed.repository.model.AppModel
 import kotlinx.coroutines.flow.flow
 
 class AppRepository {
+
+    fun vncUrl(context: Context) = context
+        .getSharedPreferences("sealed", Context.MODE_PRIVATE)
+        .getString("vncUrl", "192.168.8.162")!!
+
+    @SuppressLint("CommitPrefEdits")
+    fun changeVncUrl(context: Context, url: String) = context
+        .getSharedPreferences("sealed", Context.MODE_PRIVATE)
+        .edit()
+        .putString("vncUrl", url)
+        .commit()
 
     val apps = flow {
         emit(arrayListOf(
