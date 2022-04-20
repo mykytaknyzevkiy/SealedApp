@@ -15,6 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import coil.compose.rememberImagePainter
 import com.sealed.repository.AppRepository
 import com.sealed.repository.model.AppModel
 
@@ -41,7 +42,7 @@ fun AppViewHolder(
     ) {
         Image(
             modifier = modifier.size(65.dp),
-            painter = painterResource(id = appModel.icon),
+            painter = rememberImagePainter(appModel.icon),
             contentDescription = null
         )
 

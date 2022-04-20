@@ -122,6 +122,8 @@ dependencies {
     implementation ("com.google.android.material:material:1.5.0")
 
     implementation ("androidx.glance:glance-appwidget:1.0.0-alpha03")
+
+    implementation (AppDependencies.gson)
 }
 
 tasks.register("deployForTester") {

@@ -45,9 +45,9 @@ fun MainScreen(mViewModel: MainViewModel = viewModel()) = Surface(
         Image(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(250.dp),
+                .height(200.dp),
             painter = painterResource(id = R.drawable.main_screen_banner),
-            contentScale = ContentScale.Crop,
+            contentScale = ContentScale.FillWidth,
             contentDescription = null
         )
 
@@ -66,7 +66,7 @@ fun MainScreen(mViewModel: MainViewModel = viewModel()) = Surface(
             }
         )
 
-        Column(modifier = Modifier.padding(16.dp)) {
+        Column(modifier = Modifier.padding(16.dp).weight(1f)) {
             val gridAppsState by mViewModel.apps.collectAsState()
 
             if (gridAppsState is StateImp.Data)
@@ -77,10 +77,19 @@ fun MainScreen(mViewModel: MainViewModel = viewModel()) = Surface(
             if (favouriteApps is StateImp.Data)
                 FavouriteApps(apps = (favouriteApps as StateImp.Data<List<AppModel>>).value)*/
         }
+
+        Image(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(150.dp),
+            painter = painterResource(id = R.drawable.main_screen_bottom_banner),
+            contentScale = ContentScale.Crop,
+            contentDescription = null
+        )
     }
 
     LaunchedEffect(key1 = 1) {
-        mViewModel.load()
+        mViewModel.load(context)
     }
 }
 
