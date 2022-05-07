@@ -1,7 +1,6 @@
 package com.sealed.app.ui.view_holder
 
 import android.content.Intent
-import android.net.Uri
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
@@ -13,10 +12,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberImagePainter
-import com.sealed.repository.AppRepository
+import com.sealed.app.activity.VncStreamActivity
 import com.sealed.repository.model.AppModel
 
 @Composable
@@ -29,14 +27,19 @@ fun AppViewHolder(
 
     Column(
         modifier = Modifier.clickable {
-            val url = AppRepository().vncUrl(context)
-
-            Intent(Intent.ACTION_VIEW).apply {
-                setClassName("com.iiordanov.freebVNC", "com.iiordanov.bVNC.RemoteCanvasActivity")
-                data = Uri.parse("rdp://$url:5901/?ConnectionName=title&RdpUsername=root&RdpPassword=gdc45^2wEdDghT67")
-            }.also {
+            Intent(
+                context,
+                VncStreamActivity::class.java
+            ).also {
                 context.startActivity(it)
             }
+
+            /*Intent(
+                context,
+                WebVncStreamActivity::class.java
+            ).also {
+                context.startActivity(it)
+            }*/
         },
         horizontalAlignment = Alignment.CenterHorizontally
     ) {

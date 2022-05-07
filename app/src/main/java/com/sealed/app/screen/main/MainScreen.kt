@@ -51,7 +51,7 @@ fun MainScreen(mViewModel: MainViewModel = viewModel()) = Surface(
             contentDescription = null
         )
 
-        var vncUrl: String by remember {
+        /*var vncUrl: String by remember {
             mutableStateOf(mViewModel.vncUrl(context))
         }
 
@@ -64,7 +64,7 @@ fun MainScreen(mViewModel: MainViewModel = viewModel()) = Surface(
                     mViewModel.changeVncUrl(context, vncUrl)
                 }
             }
-        )
+        )*/
 
         Column(modifier = Modifier.padding(16.dp).weight(1f)) {
             val gridAppsState by mViewModel.apps.collectAsState()

@@ -3,14 +3,20 @@
     package="com.sealed.app">
 
     <application
+        android:name=".App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/APP"
-        android:name=".App">
-
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".activity.WebVncStreamActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.VncStreamActivity"
+            android:exported="false" />
         <activity
             android:name=".activity.MainActivity"
             android:exported="true">
@@ -33,7 +39,6 @@
                 android:name="android.appwidget.provider"
                 android:resource="@xml/quick_app_widget" />
         </receiver>
-
     </application>
 
 </manifest>

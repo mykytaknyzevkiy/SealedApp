@@ -13,6 +13,7 @@ import androidx.glance.appwidget.GlanceAppWidget
 import androidx.glance.appwidget.GlanceAppWidgetReceiver
 import androidx.glance.appwidget.action.actionStartActivity
 import androidx.glance.layout.*
+import com.sealed.app.activity.VncStreamActivity
 import com.sealed.app.screen.main.appListFlow
 import com.sealed.repository.AppRepository
 import com.sealed.repository.model.AppModel
@@ -62,14 +63,13 @@ class QuickAppReceiver : GlanceAppWidgetReceiver() {
 
 @Composable
 private fun AppViewHolder(appModel: AppModel) {
+    val context = LocalContext.current
     Image(
         modifier = GlanceModifier.padding(8.dp).size(65.dp).clickable(
-            actionStartActivity(Intent(Intent.ACTION_VIEW).apply {
-                val url = AppRepository()
-                    .vncUrl(LocalContext.current)
-                setClassName("com.iiordanov.freebVNC", "com.iiordanov.bVNC.RemoteCanvasActivity")
-                data = Uri.parse("rdp://$url:5901/?ConnectionName=title&RdpUsername=root&RdpPassword=gdc45^2wEdDghT67")
-            })
+            actionStartActivity(Intent(
+                context,
+                VncStreamActivity::class.java
+            ))
         ),
         provider = BitmapImageProvider(appModel.iconBitmap ?: return),
         contentDescription = null

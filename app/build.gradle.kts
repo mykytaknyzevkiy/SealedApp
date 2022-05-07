@@ -85,6 +85,10 @@ android {
                 this.groups  = "internal"
             }
         }
+
+        release {
+            this.isCrunchPngs = true
+        }
     }
 
     packagingOptions {
@@ -124,6 +128,12 @@ dependencies {
     implementation ("androidx.glance:glance-appwidget:1.0.0-alpha03")
 
     implementation (AppDependencies.gson)
+
+    //implementation(fileTree("libs"))
+
+    implementation(project(":stream"))
+
+    implementation("androidx.webkit:webkit:1.2.0")
 }
 
 tasks.register("deployForTester") {
