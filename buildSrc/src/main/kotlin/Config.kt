@@ -4,7 +4,7 @@ object Config {
 
     const val minSdkVersion = "27"
     const val targetVersion = "31"
-    const val versionCode = 9
+    const val versionCode = 10
     const val versionName = "1.0.0"
 
     private val releaseList = arrayListOf<String>().apply {}

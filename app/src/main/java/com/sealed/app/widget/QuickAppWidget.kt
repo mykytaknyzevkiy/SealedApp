@@ -15,6 +15,7 @@ import androidx.glance.appwidget.action.actionStartActivity
 import androidx.glance.layout.*
 import com.sealed.app.activity.VncStreamActivity
 import com.sealed.app.screen.main.appListFlow
+import com.sealed.app.unit.VncUnit
 import com.sealed.repository.AppRepository
 import com.sealed.repository.model.AppModel
 import kotlinx.coroutines.Dispatchers
@@ -66,10 +67,7 @@ private fun AppViewHolder(appModel: AppModel) {
     val context = LocalContext.current
     Image(
         modifier = GlanceModifier.padding(8.dp).size(65.dp).clickable(
-            actionStartActivity(Intent(
-                context,
-                VncStreamActivity::class.java
-            ))
+            actionStartActivity(VncUnit.createIntent(context, appModel) ?: return)
         ),
         provider = BitmapImageProvider(appModel.iconBitmap ?: return),
         contentDescription = null

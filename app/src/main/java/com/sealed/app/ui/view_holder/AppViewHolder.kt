@@ -15,6 +15,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberImagePainter
 import com.sealed.app.activity.VncStreamActivity
+import com.sealed.app.unit.VncUnit
 import com.sealed.repository.model.AppModel
 
 @Composable
@@ -27,19 +28,9 @@ fun AppViewHolder(
 
     Column(
         modifier = Modifier.clickable {
-            Intent(
-                context,
-                VncStreamActivity::class.java
-            ).also {
+            VncUnit.createIntent(context, appModel)?.also {
                 context.startActivity(it)
             }
-
-            /*Intent(
-                context,
-                WebVncStreamActivity::class.java
-            ).also {
-                context.startActivity(it)
-            }*/
         },
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
